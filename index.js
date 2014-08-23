@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var 
 Mongo = require( 'mongodb' ).MongoClient,
 argv = require( 'minimist' )( process.argv.slice(2) ),
@@ -19,7 +21,7 @@ function transformToString( chunk, enc, done ) {
 function connectMongo( options, callback ) {
 
   var url = 'mongodb://' + options.host + ':' + options.port + '/' + options.database;
-  console.log( url );
+
   Mongo.connect( url, callback );
 
 }
