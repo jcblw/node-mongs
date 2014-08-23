@@ -14,7 +14,7 @@
   "repostiory": {
     "type": "git",
     "url": "https://github.com/jacoblwe20/node-mongo-stream.git"
-  }
+  },
   "author": "Jacob Lowe",
   "license": "ISC",
   "dependencies": {
