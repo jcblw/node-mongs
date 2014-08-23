@@ -1,0 +1,20 @@
+{
+  "name": "mongo-stream",
+  "version": "0.0.0",
+  "description": "A utility to stream data out of mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "mongodb",
+    "stream",
+    "dat"
+  ],
+  "author": "Jacob Lowe",
+  "license": "ISC",
+  "dependencies": {
+    "through2": "~0.6.1",
+    "minimist": "~1.1.0"
+  }
+}
