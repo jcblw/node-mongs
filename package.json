@@ -1,6 +1,6 @@
 {
-  "name": "mongo-stream",
-  "version": "0.0.0",
+  "name": "mongs",
+  "version": "0.0.2",
   "description": "A utility to stream data out of mongodb",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,17 @@
     "stream",
     "dat"
   ],
+  "repostiory": {
+    "type": "git",
+    "url": "https://github.com/jacoblwe20/node-mongo-stream.git"
+  }
   "author": "Jacob Lowe",
   "license": "ISC",
   "dependencies": {
     "minimist": "~1.1.0",
     "mongodb": "~1.4.8"
+  },
+  "bin": {
+    "mongs": "index.js"
   }
 }
