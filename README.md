@@ -1,16 +1,20 @@
 # Mongs
 
-a command line tool to stream data to terminal so it can be piped to things like [dat](http://dat-data.org)
+a command line tool to stream [mongodb](http://www.mongodb.com/) data to terminal so it can be piped to things like [dat](http://dat-data.org)
 
 ## Install
 
-  $ npm install mongs -g
+    $ npm install mongs -g
 
 ## Usage
 
-  $ mong -d databaseName -c collectionName [ -h host -p port ]
+    $ mong -d databaseName -c collectionName [ -h host -p port ]
 
-There is no error checking or anything fancy yet and database name and collection name are the only two requirements.
+you can pipe the results to dat
+
+    $ mong -d project -c geopoints | dat import --json --primary=_id  
+
+> it is in early stages so expect the unexpected
 
 ## Wishlist
 
