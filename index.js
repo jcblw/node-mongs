@@ -34,6 +34,11 @@ function createStream( db, collection ) {
 
 }
 
+if ( !( dbName && collectionName ) ) {
+  process.stderr.write( 'You must include -d {databaseName} and -c {collectionName} for mongs to work' );
+  return;
+}
+
 connectMongo({
   host: host,
   port: port,
