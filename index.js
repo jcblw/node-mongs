@@ -14,7 +14,7 @@ tranformStrings = new Transform( {
 tranformStrings._transform = transformToString;
 
 function transformToString( chunk, enc, done ) {
-  this.push( JSON.stringify( chunk, null ) );
+  this.push( JSON.stringify( chunk ) + '\n' );
   done( );
 }
 
