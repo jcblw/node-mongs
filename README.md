@@ -8,13 +8,15 @@ a command line tool to stream [mongodb](http://www.mongodb.com/) data to termina
 
 ## Usage
 
-    $ mong -d databaseName -c collectionName [ -h host -p port ]
+    $ mongs -d databaseName -c collectionName [ -h host -p port ]
 
 you can pipe the results to dat
 
-    $ mong -d project -c geopoints | dat import --json --primary=_id  
+    $ mongs -d project -c geopoints | dat import --json --primary=_id  
 
-> it is in early stages so expect the unexpected
+you can also access remote urls and even authenticate 
+
+    $ mongs --user test --password 1234 -h hello.example.com -p 49153 -d sample -c locations
 
 ## Wishlist
 
