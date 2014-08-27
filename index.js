@@ -6,8 +6,10 @@ argv = require( 'minimist' )( process.argv.slice(2) ),
 Transform = require( 'stream' ).Transform,
 host = argv.h || 'localhost',
 port = argv.p || '27017',
-dbName = argv.d || argv.db,
-collectionName = argv.c,
+dbName = argv.db || argv.d,
+collectionName = argv.collection || argv.c,
+username = argv.user || argv.u,
+password = argv.password || argv.pass || argv.k,
 tranformStrings = new Transform( {
   objectMode: true
 } );
