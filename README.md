@@ -18,7 +18,6 @@ you can pipe the results to dat
 
 ## Wishlist
 
-- support for auth ( username, password )
 - allow for javascript api
 - better intergration into dat
 - better name
