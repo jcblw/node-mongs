@@ -22,7 +22,9 @@ function transformToString( chunk, enc, done ) {
 
 function connectMongo( options, callback ) {
 
-  var url = 'mongodb://' + options.host + ':' + options.port + '/' + options.database;
+  var 
+  auth = ( options.username ) ? options.username + ':' + options.password + '@' : '',
+  url = 'mongodb://' + auth + options.host + ':' + options.port + '/' + options.database;
 
   Mongo.connect( url, callback );
 
@@ -44,7 +46,9 @@ if ( !( dbName && collectionName ) ) {
 connectMongo({
   host: host,
   port: port,
-  database: dbName
+  database: dbName,
+  username: username,
+  password: password
 }, function( err, db ) {
 
   if ( err ) {
