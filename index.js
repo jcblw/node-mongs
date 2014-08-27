@@ -56,11 +56,21 @@ connectMongo({
     return;
   }
 
+  function errorHandler( type, err ) {
+    process.stderr.write( type );
+    process.stderr.write( err.message );
+    process.exit();
+  }
+
   var stream = createStream( db, collectionName );
 
   stream
+    .on( 'error', errorHandler.bind( null, 'Cursor Stream:' ) )
     .pipe( tranformStrings )
+    .on( 'error', errorHandler.bind( null, 'Stream Transform:' ) )
     .pipe( process.stdout );
+
+
 
   stream.on( 'end', process.exit.bind( process ) );
 
