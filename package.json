@@ -4,7 +4,7 @@
   "description": "A utility to stream data out of mongodb",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "keywords": [
     "mongodb",
@@ -19,9 +19,15 @@
   "license": "ISC",
   "dependencies": {
     "minimist": "~1.1.0",
-    "mongodb": "~1.4.8"
+    "mongodb": "~1.4.8",
+    "JSONStream": "^0.9.0",
+    "through": "^2.3.4"
   },
   "bin": {
-    "mongs": "index.js"
+    "mongs": "bin/mongs"
+  },
+  "devDependencies": {
+    "should": "^4.0.4",
+    "mocha": "^1.21.4"
   }
 }

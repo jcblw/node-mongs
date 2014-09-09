@@ -1,77 +1,48 @@
-#!/usr/bin/env node
-
 var 
 Mongo = require( 'mongodb' ).MongoClient,
-argv = require( 'minimist' )( process.argv.slice(2) ),
-Transform = require( 'stream' ).Transform,
-host = argv.host || argv.h || 'localhost',
-port = argv.port || argv.p || '27017',
-dbName = argv.db || argv.d,
-collectionName = argv.collection || argv.c,
-username = argv.user || argv.u,
-password = argv.password || argv.pass || argv.k,
-tranformStrings = new Transform( {
-  objectMode: true
-} );
-tranformStrings._transform = transformToString;
+JSONStream = require('JSONStream')
+through = require('through')
 
-function transformToString( chunk, enc, done ) {
-  this.push( JSON.stringify( chunk ) + '\n' );
-  done( );
-}
+module.exports = exportMongo
 
-function connectMongo( options, callback ) {
+function exportMongo(options) {
+  if (!options.db)
+    throw new Error('You must include -d {databaseName} for mongs to work')
+  if (!options.collection)
+    throw new Error('You must include -c {collectionName} for mongs to work')
 
   var 
-  auth = ( options.username ) ? options.username + ':' + options.password + '@' : '',
-  url = 'mongodb://' + auth + options.host + ':' + options.port + '/' + options.database;
+  host = options.host || 'localhost',
+  port = options.port || '27017',
+  dbName = options.db,
+  collectionName = options.collection
+  auth = ( options.user ) ? options.user + ':' + options.password + '@' : '',
+  url = 'mongodb://' + auth + host + ':' + port + '/' + dbName;
+  output = null
 
-  Mongo.connect( url, callback );
-
-}
-
-function createStream( db, collection ) {
-
-  var _collection = db.collection( collection );
-
-  return _collection.find().stream();
-
-}
-
-if ( !( dbName && collectionName ) ) {
-  process.stderr.write( 'You must include -d {databaseName} and -c {collectionName} for mongs to work' );
-  return;
-}
-
-connectMongo({
-  host: host,
-  port: port,
-  database: dbName,
-  username: username,
-  password: password
-}, function( err, db ) {
-
-  if ( err ) {
-    process.stderr.write( err.message );
-    return;
+  if (options.stdout) {
+    output = through(function (data) {
+      process.stdout.write(data)
+    }, function() {
+      process.exit()
+    })
+  } else {
+    output = through(function (data) {
+      this.emit('data', data)
+    })
   }
 
-  function errorHandler( type, err ) {
-    process.stderr.write( type );
-    process.stderr.write( err.message );
-    process.exit();
-  }
+  Mongo.connect( url, function(err, db) {
+    if (err)
+      output.write(err.message)
 
-  var stream = createStream( db, collectionName );
+    db.collection(collectionName)
+      .find()
+      .stream()
+      .pipe(JSONStream.stringify(false))
+      .pipe(output)
 
-  stream
-    .on( 'error', errorHandler.bind( null, 'Cursor Stream:' ) )
-    .pipe( tranformStrings )
-    .on( 'error', errorHandler.bind( null, 'Stream Transform:' ) )
-    .pipe( process.stdout );
+  });
 
-
-
-  stream.on( 'end', process.exit.bind( process ) );
-
-});
+  return output
+}
