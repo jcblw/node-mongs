@@ -1,7 +1,7 @@
 
 # Mongs [![Build Status](https://travis-ci.org/jcblw/node-mongs.svg?branch=master)](https://travis-ci.org/jcblw/node-mongs)
 
-a command line tool to stream [mongodb](http://www.mongodb.com/) data to terminal so it can be piped to things like [dat](http://dat-data.org)
+a tool to stream [mongodb](http://www.mongodb.com/) data so it can be piped to things like [dat](http://dat-data.org)
 
 ## Install
 
@@ -23,10 +23,10 @@ you can also access remote urls and even authenticate
 
 ### Javascript Api
 
-Right now all mongs does is exports a stream of data
+Right now, mongs just exports a stream of data
 
 ```javascript
-var mongs = require( 'mongs' );
+var mongs = require( 'mongs' ),
     stream = mongs({ 
       db: 'mongs-test',
       collection: 'mongs'
@@ -39,7 +39,7 @@ The api is the same as the CLI
 
 ### Api
 
-Both the command line and javascript take these inputs
+Both the command line and javascript api takes these inputs.
 
     -d, --db          - required the database name
     -c, --collection  - required the collection in the database
