@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+var
+mongs = require('../index'),
+argv = require( 'minimist' )( process.argv.slice(2), {
+  alias: {
+    'h': 'host',
+    'p': 'port',
+    'd': 'db',
+    'c': 'collection',
+    'u': 'user',
+    'a': 'pass'
+  }
+})
+
+mongs({
+  host: argv.h,
+  port: argv.p,
+  db: argv.d,
+  collection: argv.c,
+  user: argv.u,
+  password: argv.a,
+  stdout: true
+})
