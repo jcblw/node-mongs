@@ -1,6 +1,6 @@
 {
   "name": "mongs",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "A utility to stream data out of mongodb",
   "main": "index.js",
   "scripts": {
