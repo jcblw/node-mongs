@@ -1,4 +1,4 @@
-[![https://travis-ci.org/jcblw/node-mongs](https://travis-ci.org/jcblw/node-mongs.svg)](https://travis-ci.org/jcblw/node-mongs)
+
 # Mongs [![Build Status](https://travis-ci.org/jcblw/node-mongs.svg?branch=master)](https://travis-ci.org/jcblw/node-mongs)
 
 a command line tool to stream [mongodb](http://www.mongodb.com/) data to terminal so it can be piped to things like [dat](http://dat-data.org)
