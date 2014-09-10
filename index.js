@@ -27,9 +27,7 @@ function exportMongo(options) {
       process.exit()
     })
   } else {
-    output = through(function (data) {
-      this.emit('data', data)
-    })
+    output = through()
   }
 
   Mongo.connect( url, function(err, db) {
