@@ -1,5 +1,5 @@
 [![https://travis-ci.org/jcblw/node-mongs](https://travis-ci.org/jcblw/node-mongs.svg)](https://travis-ci.org/jcblw/node-mongs)
-# Mongs
+# Mongs [![Build Status](https://travis-ci.org/jcblw/node-mongs.svg?branch=master)](https://travis-ci.org/jcblw/node-mongs)
 
 a command line tool to stream [mongodb](http://www.mongodb.com/) data to terminal so it can be piped to things like [dat](http://dat-data.org)
 
@@ -21,7 +21,6 @@ you can also access remote urls and even authenticate
 
 ## Wishlist
 
-- allow for javascript api
 - better intergration into dat
 - better name
 
