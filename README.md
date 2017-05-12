@@ -1,6 +1,8 @@
 
 # Mongs [![Build Status](https://travis-ci.org/jcblw/node-mongs.svg?branch=master)](https://travis-ci.org/jcblw/node-mongs)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jcblw/node-mongs.svg)](https://greenkeeper.io/)
+
 a tool to stream [mongodb](http://www.mongodb.com/) data so it can be piped to things like [dat](http://dat-data.org)
 
 ## Install
